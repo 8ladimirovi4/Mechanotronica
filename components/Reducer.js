@@ -57,7 +57,6 @@ switch (action.type) {
 let regexp = /-?\d+(\.\d+)?/g;
 const {id} = action.payload
 const {position} = action.payload
-if(position){
 const xPos = position.match(regexp)[1];
 const yPos = position.match(regexp)[2];
 const newBlock = {...state, defaultNodes: [...state.defaultNodes, 
@@ -69,13 +68,10 @@ const newBlock = {...state, defaultNodes: [...state.defaultNodes,
               }
     ]}
        return newBlock
-  }else{
-    return state
-  }
+        
      }
      case types.ADD_EDGE:{
         const {id} = action.payload
-        if(id){
         const newEdge = {...state,  defaultEdges: [...state.defaultEdges,
             { 
                 id: `${Math.random()}`, source: `${id}`, target: `${+id+1}`,  markerEnd: {type: MarkerType.ArrowClosed}
@@ -83,9 +79,6 @@ const newBlock = {...state, defaultNodes: [...state.defaultNodes,
         ]}
         console.log(state);
         return newEdge
-      }else{
-        return state
-      }
      }
 
     default: {
