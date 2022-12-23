@@ -1,47 +1,40 @@
 
-import ReactFlow, { MiniMap } from 'react-flow-renderer';
-import './index.css'
+import ReactFlow, {MarkerType} from 'react-flow-renderer/nocss';
+import 'react-flow-renderer/dist/style.css'
+import 'react-flow-renderer/dist/theme-default.css'
+
+
 
 const defaultNodes = [
   {
     id: '1',
     type: 'input',
-    data: { label: 'Input Node' },
+    data: { label: 'Block 1' },
     position: { x: 250, y: 25 },
-    style: { backgroundColor: '#6ede87', color: 'white' },
+    style: { backgroundColor: 'lightblue', color: 'white' },
   },
 
   {
     id: '2',
     // you can also pass a React component as a label
-    data: { label: <div>Default Node</div> },
+    data: { label: 'Block 2' },
     position: { x: 100, y: 125 },
-    style: { backgroundColor: '#ff0072', color: 'white' },
+    style: { backgroundColor: 'lightblue', color: 'white' },
   },
   {
     id: '3',
     type: 'output',
-    data: { label: 'Output Node' },
+    data: { label: 'Block 3' },
     position: { x: 250, y: 250 },
-    style: { backgroundColor: '#6865A5', color: 'white' },
+    style: { backgroundColor: 'lightblue', color: 'white' },
   },
 ];
 
 const defaultEdges = [
-  { id: 'e1-2', source: '1', target: '2' },
-  { id: 'e2-3', source: '2', target: '3', animated: true },
+  { id: 'e1-2', source: '1', target: '2',  markerEnd: {type: MarkerType.ArrowClosed}},
+  { id: 'e2-3', source: '2', target: '3', markerEnd: {type: MarkerType.ArrowClosed}},
 ];
 
-const nodeColor = (node) => {
-  switch (node.type) {
-    case 'input':
-      return '#6ede87';
-    case 'output':
-      return '#6865A5';
-    default:
-      return '#ff0072';
-  }
-};
 
 const OverviewFlow = () => {
   
@@ -51,9 +44,8 @@ const OverviewFlow = () => {
     defaultNodes={defaultNodes} 
     defaultEdges={defaultEdges} 
     fitView
-    style={{height:'90vh'}}
+    style={{width: '100%', height:'100vh'}}
     >
-      <MiniMap nodeColor={nodeColor} nodeStrokeWidth={3} zoomable pannable />
     </ReactFlow>
     </>
   );
