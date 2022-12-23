@@ -1,5 +1,6 @@
 import React, { useEffect, useReducer }from 'react'
 import ReactFlow, {MarkerType} from 'react-flow-renderer/nocss';
+import './components.css'
 import 'react-flow-renderer/dist/style.css'
 import 'react-flow-renderer/dist/theme-default.css'
 import reducer, { loadBlocks, initialState, addBlock, addEdg } from './Reducer';
@@ -19,8 +20,8 @@ dispatch(loadBlocks())
   dispatch(addBlock({
   id: event.target.getAttribute('data-id'),
   position: event.target.getAttribute('style')}))
-
-    dispatch(addEdg({
+    
+  dispatch(addEdg({
     id: event.target.getAttribute('data-id'),
     position: event.target.getAttribute('style')}))
   }

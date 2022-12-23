@@ -3,17 +3,17 @@
     padding: 0;
 }
 
-/* div {
-    width: 500px;
-    height: 500px;
-    background-color: lightgrey;
-} */
-.react-flow {
-    height: 90vh;
-    width: 100%;
+.cont {
+    height: 10em;
+    position: relative
 }
 
-.react-flow__renderer{
-    height: 90vh;
-    width: 100%;
-}
+.diagram-container {
+    border: 2px #333 solid;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%) 
+  }

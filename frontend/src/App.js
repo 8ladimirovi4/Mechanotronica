@@ -1,13 +1,10 @@
-import './App.css';
-import OverviewFlow from './components/OverviewFlow';
-import { ReactFlowProvider } from 'reactflow';
+import OverviewFlow from "./components/OverviewFlow";
+
 
 function App() {
   return (
-    <div className="App">
-      <ReactFlowProvider>
-     <OverviewFlow/>
-     </ReactFlowProvider>
+    <div className="App"> 
+    <OverviewFlow/>
     </div>
   );
 }

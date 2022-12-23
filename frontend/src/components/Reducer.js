@@ -7,31 +7,12 @@ const initialState = {
           id: '1',
           type: 'input',
           data: { label: 'Block 1' },
-          position: { x: 250, y: 25 },
+          position: { x: 0, y: -50 },
           style: { backgroundColor: 'lightblue', color: 'white' },
         },
-      
-        {
-          id: '2',
-         
-          // you can also pass a React component as a label
-          data: { label: 'Block 2' },
-          position: { x: 250, y: 100 },
-          style: { backgroundColor: 'lightblue', color: 'white' },
-        },
-        {
-            id: '3',
-          
-            // you can also pass a React component as a label
-            data: { label: 'Block 3' },
-            position: { x: 250, y: 180 },
-            style: { backgroundColor: 'lightblue', color: 'white' },
-          },
       ],
 
       defaultEdges: [
-        { id: 'e1-2', source: '1', target: '2',  markerEnd: {type: MarkerType.ArrowClosed}},
-        { id: 'e2-3', source: '2', target: '3',  markerEnd: {type: MarkerType.ArrowClosed}},
       ]
 }
 
@@ -50,10 +31,13 @@ const actions = {
 
 const reducer = (state, action) => {
 switch (action.type) {
+
     case types.LOAD_BLOCKS:{
        return state
     }
+
     case types.ADD_BLOCK:{
+console.log(state);
 let regexp = /-?\d+(\.\d+)?/g;
 const {id} = action.payload
 const {position} = action.payload
@@ -65,7 +49,7 @@ const newBlock = {...state, defaultNodes: [...state.defaultNodes,
                 id: `${+id+1}`,
                 data: { label: `Block ${+id+1}` },
                 position: { x: +xPos, y: +yPos + 80 },
-                style: { backgroundColor: 'lightblue', color: 'white' },
+                style: { backgroundColor: 'lightblue', color: 'white'},
               }
     ]}
        return newBlock
@@ -73,15 +57,19 @@ const newBlock = {...state, defaultNodes: [...state.defaultNodes,
     return state
   }
      }
+
      case types.ADD_EDGE:{
+
         const {id} = action.payload
         if(id){
         const newEdge = {...state,  defaultEdges: [...state.defaultEdges,
             { 
-                id: `${Math.random()}`, source: `${id}`, target: `${+id+1}`,  markerEnd: {type: MarkerType.ArrowClosed}
+                id: `${Math.random()}`, 
+                source: `${id}`, 
+                target: `${+id+1}`,  
+                markerEnd: {type: MarkerType.ArrowClosed},
             }     
         ]}
-        console.log(state);
         return newEdge
       }else{
         return state
