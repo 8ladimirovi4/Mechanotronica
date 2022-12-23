@@ -24,7 +24,7 @@ dispatch(loadBlocks())
     id: event.target.getAttribute('data-id'),
     position: event.target.getAttribute('style')}))
   }
-
+//www
   return (
     <>
      {/* <button onClick={addBlockFunc}> click</button> */}
