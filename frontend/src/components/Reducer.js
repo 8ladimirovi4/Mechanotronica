@@ -6,7 +6,7 @@ const initialState = {
         {
           id: '1',
           type: 'input',
-          data: { label: 'Block 1' },
+          data: { label: 'Block 1'},
           position: { x: 250, y: 25 },
           style: { backgroundColor: 'lightblue', color: 'white' },
         },
@@ -35,12 +35,14 @@ const initialState = {
 
 const types = {
     LOAD_BLOCKS: 'LOAD_BLOCKS',
-    ADD_BLOCK: 'ADD_BLOCK'
+    ADD_BLOCK: 'ADD_BLOCK',
+    ADD_EDGE: 'ADD_EDGE'
 }
 
 const actions = {
     loadBlocks: () => ({type: types.LOAD_BLOCKS}),
-    addBlock: () => ({type: types.ADD_BLOCK}),
+    addBlock: (data) => ({type: types.ADD_BLOCK, payload: data}),
+    addEdge: (data) => ({type: types.ADD_EDGE, payload: data})
 }
 
 const reducer = (state, action) => {
@@ -49,16 +51,22 @@ switch (action.type) {
        return state
     }
     case types.ADD_BLOCK:{
-
+let regexp = /-?\d+(\.\d+)?/g;
+const {id} = action.payload
+const {position} = action.payload
+console.log('id==>', id);
+const xPos = position.match(regexp)[1];
+const yPos = position.match(regexp)[2];
         const newBlock = {...state, defaultNodes: [...state.defaultNodes, 
             {
-                id: '2',
+                id: `${+id+1}`,
                 type: 'input',
-                data: { label: 'Block 1' },
-                position: { x: 300, y: 40 },
+                data: { label: `Block ${+id+1}` },
+                position: { x: +xPos, y: +yPos + 50 },
                 style: { backgroundColor: 'lightblue', color: 'white' },
               }
         ]}
+        console.log(state);
        return newBlock
         
      }

@@ -1,11 +1,10 @@
-import React, { useEffect, useReducer, useState }from 'react'
+import React, { useEffect, useReducer, useRef, useState }from 'react'
 import ReactFlow from 'react-flow-renderer/nocss';
 import 'react-flow-renderer/dist/style.css'
 import 'react-flow-renderer/dist/theme-default.css'
 import reducer, { loadBlocks, initialState, addBlock } from './Reducer';
 
 const OverviewFlow = () => {
-  const [block, setBlock] = useState()
   const [blocks, dispatch] = useReducer(reducer, initialState)
 
 
@@ -13,16 +12,19 @@ const OverviewFlow = () => {
 dispatch(loadBlocks())
   },[blocks])
 
-  console.log(blocks.defaultNodes);
 
-  const addBlockFunc = () => {
-dispatch(addBlock())
+
+  const addBlockFunc = (event) => {
+dispatch(addBlock({
+  id: event.target.getAttribute('data-id'),
+  position: event.target.getAttribute('style')}))
   }
 
   return (
     <>
-     <button onClick={addBlockFunc}> click</button>
+     {/* <button onClick={addBlockFunc}> click</button> */}
     <ReactFlow 
+    onClick={addBlockFunc}
     defaultNodes={blocks.defaultNodes && blocks.defaultNodes} 
     defaultEdges={blocks.defaultEdges && blocks.defaultEdges} 
     fitView
