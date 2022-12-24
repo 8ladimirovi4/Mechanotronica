@@ -6,7 +6,7 @@ const initialState = {
         {
           id: '1',
           data: { label: 'Block 1' },
-          position: { x: 0, y: 0 },
+          position: { x: 0, y: 10 },
           style: {color: 'white' },
           status: false
         },

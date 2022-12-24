@@ -34,7 +34,6 @@ dispatch(loadBlocks())
     onClick={addBlockFunc}
     defaultNodes={blocks.defaultNodes && blocks.defaultNodes} 
     defaultEdges={blocks.defaultEdges && blocks.defaultEdges} 
-    fitView
     style={{width: '100%', height:'100vh'}}
     >
     </ReactFlow>
