@@ -3,5 +3,13 @@
     padding: 0, auto;
 }
 
+.react-flow__node{
+    background-color: lightblue;
+    }
+
+
+.react-flow__node:hover{
+background-color: aqua;
+}
 
 

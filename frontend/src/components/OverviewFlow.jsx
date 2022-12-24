@@ -25,8 +25,6 @@ dispatch(loadBlocks())
     id: event.target.getAttribute('data-id'),
     position: event.target.getAttribute('style')}))
 
-    const foo = blocks.defaultNodes.filter(el => el.status === false ? el.style.backgroundColor = 'red': el)
-    console.log(foo);
   }
 
   return (

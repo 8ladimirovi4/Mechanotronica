@@ -7,7 +7,7 @@ const initialState = {
           id: '1',
           data: { label: 'Block 1' },
           position: { x: 0, y: 0 },
-          style: { backgroundColor: 'lightblue', color: 'white' },
+          style: {color: 'white' },
           status: false
         },
       ],
@@ -51,8 +51,8 @@ let newBlock = {
                 id: `${+id+1}`,
                 data: { label: `Block ${+id+1}` },
                 position: { x: +xPos, y: +yPos + 80 },
-                style: { backgroundColor: 'lightblue', color: 'white'},
-                status: true
+                style: {color: 'white'},
+                status: false
               }
     ]}
 
