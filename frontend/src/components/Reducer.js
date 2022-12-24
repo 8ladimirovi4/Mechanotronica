@@ -5,17 +5,16 @@ const initialState = {
     defaultNodes: [
         {
           id: '1',
-          type: 'input',
           data: { label: 'Block 1' },
-          position: { x: 0, y: -50 },
+          position: { x: 0, y: 0 },
           style: { backgroundColor: 'lightblue', color: 'white' },
+          status: false
         },
       ],
 
       defaultEdges: [
       ]
 }
-
 
 const types = {
     LOAD_BLOCKS: 'LOAD_BLOCKS',
@@ -37,21 +36,26 @@ switch (action.type) {
     }
 
     case types.ADD_BLOCK:{
-console.log(state);
 let regexp = /-?\d+(\.\d+)?/g;
 const {id} = action.payload
 const {position} = action.payload
+
+
 if(position){
 const xPos = position.match(regexp)[1];
 const yPos = position.match(regexp)[2];
-const newBlock = {...state, defaultNodes: [...state.defaultNodes, 
+let newBlock = {
+  ...state, 
+  defaultNodes: [...state.defaultNodes.map((el) => position ? {...el, status: false} : el),
             {
                 id: `${+id+1}`,
                 data: { label: `Block ${+id+1}` },
                 position: { x: +xPos, y: +yPos + 80 },
                 style: { backgroundColor: 'lightblue', color: 'white'},
+                status: true
               }
     ]}
+
        return newBlock
   }else{
     return state
