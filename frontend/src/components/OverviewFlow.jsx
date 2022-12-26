@@ -10,13 +10,17 @@ const OverviewFlow = () => {
 
   useEffect(() => {
     dispatch(loadBlocks());
-  }, [blocks]);
+  }, []);
 
   const addBlockFunc = (event) => {
+    const coordinates = Math.floor(Math.random() * (500-80) + 80)
+    const random = Math.floor(Math.random() * (500 - 80) + 80)
     dispatch(
       addBlock({
         id: event.target.getAttribute('data-id'),
         position: event.target.getAttribute('style'),
+        coordinates: coordinates,
+        random: Math.floor(Math.random() * (500 - 80) + 80)
       })
     );
 
@@ -24,6 +28,7 @@ const OverviewFlow = () => {
       addEdg({
         id: event.target.getAttribute('data-id'),
         position: event.target.getAttribute('style'),
+        coordinates: coordinates
       })
     );
   };

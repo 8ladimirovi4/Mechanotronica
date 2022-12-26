@@ -1,4 +1,5 @@
 import { MarkerType } from 'react-flow-renderer/nocss';
+const map = new Map()
 
 const initialState = {
   defaultNodes: [
@@ -36,26 +37,26 @@ const reducer = (state, action) => {
       let regexp = /-?\d+(\.\d+)?/g;
       const { id } = action.payload;
       const { position } = action.payload;
+      const { coordinates} = action.payload
+      const { random } = action.payload
 
       if (position) {
         const xPos = position.match(regexp)[1];
         const yPos = position.match(regexp)[2];
         let newBlock = {
-          ...state,
-          defaultNodes: [
-            ...state.defaultNodes.map((el) =>
-              position ? { ...el, status: false } : el
-            ),
+      ...state,
+          defaultNodes: [...state.defaultNodes.map((el) =>
+            id === el.id ? { ...el, position: { x: xPos, y: yPos } } : el
+          ),
             {
-              id: `${+id + 1}`,
-              data: { label: `Block ${+id + 1}` },
-              position: { x: +xPos, y: +yPos + 80 },
+              id: `${random}`,
+              data: { label: `Block ${random}` },
+              position: { x: random, y: random },
               style: { color: 'white' },
               status: false,
             },
           ],
         };
-
         return newBlock;
       } else {
         return state;
@@ -64,6 +65,7 @@ const reducer = (state, action) => {
 
     case types.ADD_EDGE: {
       const { id } = action.payload;
+
       if (id) {
         const newEdge = {
           ...state,
@@ -72,7 +74,7 @@ const reducer = (state, action) => {
             {
               id: `${Math.random()}`,
               source: `${id}`,
-              target: `${+id + 1}`,
+              target: `${map.get(1)}`,
               markerEnd: { type: MarkerType.ArrowClosed },
             },
           ],
