@@ -25,15 +25,15 @@
   border: solid gray;
 }
 
-.react-flow__node:hover{
+.react-flow__node:hover {
   background-color: aqua;
-  }
+}
 
 .react-flow .react-flow__edge path,
 .react-flow__connectionline path {
   stroke-width: 2;
 }
 
-.react-flow{
+.react-flow {
   height: 100vh !important;
 }
