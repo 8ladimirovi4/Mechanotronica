@@ -1,11 +1,15 @@
-import OverviewFlow from "./components/OverviewFlow";
+import React from 'react';
+import './App.css';
+import OverviewFlow from './components/version_1/OverviewFlow';
+import AddNodeWhithParentsNodes from './components/version_2/AddNodeWhithParentsNodes';
 
 
 function App() {
-  return (
-    <div className="App"> 
-    <OverviewFlow/>
-    </div>
+  return ( 
+    <>
+    {/* <OverviewFlow/> */}
+        <AddNodeWhithParentsNodes/> 
+        </>
   );
 }
 
