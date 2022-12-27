@@ -1,4 +1,5 @@
 import React from 'react';
+import useResizeObserver from "use-resize-observer/polyfilled";
 import './App.css';
 import OverviewFlow from './components/version_1/OverviewFlow';
 import AddNodeWhithParentsNodes from './components/version_2/AddNodeWhithParentsNodes';
@@ -6,10 +7,10 @@ import AddNodeWhithParentsNodes from './components/version_2/AddNodeWhithParents
 
 function App() {
   return ( 
-    <>
+    <div>
     {/* <OverviewFlow/> */}
         <AddNodeWhithParentsNodes/> 
-        </>
+        </div>
   );
 }
 
